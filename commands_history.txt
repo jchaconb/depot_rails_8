@@ -1,0 +1,13 @@
+% rails new depot --css tailwind
+
+% rails generate scaffold Product title:string description:text image:attachment price:decimal
+
+// Since we've defined an attachment, we need to install the tables that Active Storage uses to track the attachments
+% rails active_storage:install
+
+% rails db:migrate
+
+// This is because things like CSS processors and JavaScript bundlers require a build step.
+% bin/dev
+
+% rails db:seed

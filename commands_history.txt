@@ -11,3 +11,5 @@
 % bin/dev
 
 % rails db:seed
+
+% bin/rails test:models

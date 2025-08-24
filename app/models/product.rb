@@ -15,11 +15,11 @@ class Product < ApplicationRecord
 
   private
 
-  def acceptable_image
-    return unless image.attached?
+    def acceptable_image
+      return unless image.attached?
 
-    unless ACCEPTABLE_TYPES.include?(image.content_type)
-      errors.add(:image, "must be a GIF, JPEG or PNG")
+      unless ACCEPTABLE_TYPES.include?(image.content_type)
+        errors.add(:image, "must be a GIF, JPEG or PNG")
+      end
     end
-  end
 end

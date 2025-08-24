@@ -46,11 +46,11 @@ product = Product.create(title: 'Rails Scales!',
     </p>),
   price: 30.95)
 
-  product.image.attach(io: File.open(
-    Rails.root.join('db', 'images', 'image_2.jpg')),
-      filename: 'image_2.jpg')
+product.image.attach(io: File.open(
+  Rails.root.join('db', 'images', 'image_2.jpg')),
+    filename: 'image_2.jpg')
 
-  product.save!
+product.save!
 # . . .
 
 product = Product.create(title: 'Modern Front-End Development for Rails, Second Edition',

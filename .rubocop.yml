@@ -1,8 +1,32 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+# .rubocop.yml
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+# Load extra cops you want active
+require:
+  - rubocop-minitest
+
+AllCops:
+  NewCops: enable
+
+inherit_mode:
+  merge:
+    - Exclude
+
+Minitest/AssertPredicate:
+  Enabled: false
+
+Minitest/MultipleAssertions:
+  Enabled: false  # set true if you want to enforce one assertion per test
+
+Layout/IndentationConsistency:
+  Enabled: true
+
+Layout/IndentationWidth:
+  Enabled: true
+
+Layout/FirstArgumentIndentation:
+  Enabled: true
+
+Layout/BlockAlignment:
+  Enabled: true

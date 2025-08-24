@@ -2,7 +2,8 @@ require "application_system_test_case"
 
 class ProductsTest < ApplicationSystemTestCase
   setup do
-    @product = products(:one)
+    @product = products(:two)
+    @image_path = file_fixture("lorem.jpg").to_s
   end
 
   test "visiting the index" do
@@ -17,7 +18,10 @@ class ProductsTest < ApplicationSystemTestCase
 
     fill_in "Description", with: @product.description
     fill_in "Price", with: @product.price
-    fill_in "Title", with: @product.title
+    fill_in "Title", with: "#{@product.title} #{SecureRandom.hex(4)}"
+
+    attach_file "Image", @image_path, make_visible: true
+
     click_on "Create Product"
 
     assert_text "Product was successfully created"
@@ -31,6 +35,9 @@ class ProductsTest < ApplicationSystemTestCase
     fill_in "Description", with: @product.description
     fill_in "Price", with: @product.price
     fill_in "Title", with: @product.title
+
+    attach_file "Image", @image_path, make_visible: true
+
     click_on "Update Product"
 
     assert_text "Product was successfully updated"

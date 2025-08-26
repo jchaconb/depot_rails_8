@@ -2,8 +2,7 @@
 inherit_gem:
   rubocop-rails-omakase: rubocop.yml
 
-# Load extra cops you want active
-require:
+plugins:
   - rubocop-minitest
 
 AllCops:

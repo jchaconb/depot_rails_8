@@ -1,0 +1,6 @@
+blob_one: <%= ActiveStorage::FixtureSet.blob filename: 'lorem.jpg' %>
+blob_two: <%= ActiveStorage::FixtureSet.blob filename: 'lorem.png' %>
+#​START_HIGHLIGHT
+
+blob_pragprog: <%= ActiveStorage::FixtureSet.blob filename: 'lorem.jpg' %>
+#​END_HIGHLIGHT

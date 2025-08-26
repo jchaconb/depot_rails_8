@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root "store#index", as: "store_index"
+
   resources :products
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,5 +13,4 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
 end

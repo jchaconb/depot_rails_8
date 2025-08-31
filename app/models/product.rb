@@ -1,6 +1,10 @@
 class Product < ApplicationRecord
   has_one_attached :image
 
+  has_many :line_items
+
+  before_destroy :ensure_not_referenced_by_any_line_item
+
   # This tells Rails to broadcast changes to the product
   # model to any clients that are listening.
   after_commit -> { broadcast_refresh_later_to "products" }
@@ -21,6 +25,13 @@ class Product < ApplicationRecord
 
       unless ACCEPTABLE_TYPES.include?(image.content_type)
         errors.add(:image, "must be a GIF, JPEG or PNG")
+      end
+    end
+
+    def ensure_not_referenced_by_any_line_item
+      unless line_items.empty?
+        errors.add(:base, "Line Items present")
+        throw :abort
       end
     end
 end

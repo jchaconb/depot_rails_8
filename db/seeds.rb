@@ -25,8 +25,8 @@ product = Product.create(title: 'Programming Ruby 3.3 (5th Edition)',
   price: 33.95)
 
 product.image.attach(io: File.open(
-  Rails.root.join('db', 'images', 'image_1.jpg')),
-    filename: 'image_1.jpg')
+  Rails.root.join('db', 'images', 'image_1.png')),
+    filename: 'image_1.png')
 
 product.save!
 # . . .
@@ -47,8 +47,8 @@ product = Product.create(title: 'Rails Scales!',
   price: 30.95)
 
 product.image.attach(io: File.open(
-  Rails.root.join('db', 'images', 'image_2.jpg')),
-    filename: 'image_2.jpg')
+  Rails.root.join('db', 'images', 'image_2.png')),
+    filename: 'image_2.png')
 
 product.save!
 # . . .
@@ -69,7 +69,7 @@ product = Product.create(title: 'Modern Front-End Development for Rails, Second 
   price: 28.95)
 
 product.image.attach(io: File.open(
-  Rails.root.join('db', 'images', 'image_3.jpg')),
-    filename: 'image_3.jpg')
+  Rails.root.join('db', 'images', 'image_3.png')),
+    filename: 'image_3.png')
 
 product.save!

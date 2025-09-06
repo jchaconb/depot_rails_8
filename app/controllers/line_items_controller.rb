@@ -60,6 +60,6 @@ class LineItemsController < ApplicationController
     end
 
     def line_item_params
-      params.expect(line_item: [ :product_id, :cart_id ])
+      params.expect(line_item: [ :product_id ])
     end
 end

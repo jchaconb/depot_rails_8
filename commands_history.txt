@@ -33,4 +33,3 @@
 % bin/rails db:migrate
 
 % bin/rails generate migration combine_items_in_cart
-

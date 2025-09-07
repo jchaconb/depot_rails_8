@@ -33,7 +33,7 @@ RSpec/NestedGroups:
 Minitest:
   Enabled: true
 
--Minitest/MultipleAssertions:
+Minitest/MultipleAssertions:
   Enabled: false
 
 Layout/LineLength:

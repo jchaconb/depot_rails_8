@@ -68,6 +68,8 @@ group :development, :test do
 
   # --- Matchers / Helpers ---
   gem "shoulda-matchers", "~> 6.0"
+
+  gem "pry"
 end
 
 

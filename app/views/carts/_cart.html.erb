@@ -8,6 +8,7 @@
         <td>&times;</td>
         <td class="pr-2"><%= line_item.product.title %>
         <td class="text-right font-bold"><%= number_to_currency(line_item.total_price) %></td>
+        <td><%= button_to raw("&#10006;"), line_item, method: :delete, class: 'ml-4' %></td>
       </tr>  
     <% end %>
 
@@ -19,5 +20,8 @@
     </tfoot>
   </table>
 
+  <div class="flex space-2">
   <%= button_to 'Empty Cart', cart, method: :delete, class: 'ml-4 rounded-lg py-1 px-2 text-white bg-green-600' %>
+  <%= link_to 'Back', store_index_url, class: 'ml-4 w-full sm:w-auto text-center py-1 px-2 rounded-md bg-gray-100 hover:bg-gray-50 inline-block font-medium' %>
+  <div>    
 </div>

@@ -6,11 +6,11 @@ class ProductTest < ActiveSupport::TestCase
   test "product attributes must not be empty" do
     product = Product.new
 
-    assert product.invalid?
-    assert product.errors[:title].any?
-    assert product.errors[:description].any?
-    assert product.errors[:price].any?
-    assert product.errors[:image].any?
+    assert_predicate product, :invalid?
+    assert_predicate product.errors[:title], :any?
+    assert_predicate product.errors[:description], :any?
+    assert_predicate product.errors[:price], :any?
+    assert_predicate product.errors[:image], :any?
   end
 
   test "product price must be possitive" do
@@ -19,27 +19,27 @@ class ProductTest < ActiveSupport::TestCase
 
     product.price = -1
 
-    assert product.invalid?
+    assert_predicate product, :invalid?
     assert_equal [ "must be greater than or equal to 0.01" ], product.errors[:price]
 
     product.price = 0
 
-    assert product.invalid?
+    assert_predicate product, :invalid?
     assert_equal [ "must be greater than or equal to 0.01" ], product.errors[:price]
 
     product.price = 1
 
-    assert product.valid?
+    assert_predicate product, :valid?
   end
 
   test "image url" do
     product = new_product("lorem.jpg", "image/jpeg")
 
-    assert product.valid?, "image/jpeg must be valid"
+    assert_predicate product, :valid?, "image/jpeg must be valid"
 
     product = new_product("logo.svg", "image/svg+xml")
 
-    assert product.invalid?, "image/svg+xml must be invalid"
+    assert_predicate product, :invalid?, "image/svg+xml must be invalid"
   end
 
   def new_product(filename, content_type)
@@ -61,8 +61,8 @@ class ProductTest < ActiveSupport::TestCase
       content_type: "image/jpeg"
     )
 
-    assert product.invalid?
-    assert_equal [ I18n.translate("errors.messages.taken") ], product.errors[:title]
+    assert_predicate product, :invalid?
+    assert_equal [ I18n.t("errors.messages.taken") ], product.errors[:title]
   end
 
   test "product title needs to have more than 10 characters" do
@@ -71,11 +71,11 @@ class ProductTest < ActiveSupport::TestCase
 
     product.title = "book56789"
 
-    assert product.invalid?
+    assert_predicate product, :invalid?
     assert_equal [ "is too short (minimum is 10 characters)" ], product.errors[:title]
 
     product.title = "book567891"
 
-    assert product.valid?
+    assert_predicate product, :valid?
   end
 end

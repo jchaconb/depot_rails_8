@@ -1,31 +1,47 @@
-# .rubocop.yml
+inherit_from: .rubocop_todo.yml
+
 inherit_gem:
   rubocop-rails-omakase: rubocop.yml
 
 plugins:
+  - rubocop-rails
+  - rubocop-rspec
   - rubocop-minitest
 
 AllCops:
   NewCops: enable
+  TargetRubyVersion: 3.3
+  Exclude:
+    - "bin/*"
+    - "db/schema.rb"
+    - "db/migrate/*"
+    - "node_modules/**/*"
+    - "vendor/**/*"
 
-inherit_mode:
-  merge:
-    - Exclude
+Rails:
+  Enabled: true
 
-Minitest/AssertPredicate:
+RSpec/ExampleLength:
+  Max: 15
+
+RSpec/MultipleExpectations:
+  Max: 2
+
+RSpec/NestedGroups:
+  Max: 3
+
+Minitest:
+  Enabled: true
+
+-Minitest/MultipleAssertions:
   Enabled: false
 
-Minitest/MultipleAssertions:
-  Enabled: false  # set true if you want to enforce one assertion per test
+Layout/LineLength:
+  Max: 120
 
-Layout/IndentationConsistency:
-  Enabled: true
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
 
-Layout/IndentationWidth:
-  Enabled: true
-
-Layout/FirstArgumentIndentation:
-  Enabled: true
-
-Layout/BlockAlignment:
-  Enabled: true
+Style/Documentation:
+  Enabled: false

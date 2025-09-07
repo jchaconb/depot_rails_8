@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class ProductsTest < ApplicationSystemTestCase
   setup do
-    @product = products(:two)
+    @product = products(:pragprog)
     @image_path = file_fixture("lorem.jpg").to_s
   end
 
@@ -29,8 +29,6 @@ class ProductsTest < ApplicationSystemTestCase
   end
 
   test "should update Product" do
-    skip "TODO: fix this test"
-
     visit product_url(@product)
     click_on "Edit this product", match: :first
 
@@ -47,7 +45,8 @@ class ProductsTest < ApplicationSystemTestCase
   end
 
   test "should destroy Product" do
-    skip "TODO: fix this test"
+    visit store_index_url
+    click_on "Add to Cart", match: :first
 
     visit product_url(@product)
     accept_confirm { click_on "Destroy this product", match: :first }

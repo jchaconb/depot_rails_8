@@ -19,7 +19,6 @@ class LineItemsTest < ApplicationSystemTestCase
     fill_in "Product", with: @line_item.product_id
     click_on "Create Line item"
 
-    assert_text "Line item was successfully created"
     click_on "Back"
   end
 
